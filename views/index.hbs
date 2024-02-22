@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+     <div class="main-container">
+              <h2 class="header">{{>header}}</h2>
+              <article class="widgets">
+                <form action="" class="weatherLocation">
+                    <input type="text" class="input-files" placeholder="Enter your city name ">
+                    <button type="submit" class="search-button">Search</button>
+
+
+                </form>
+                <div class="icon-amd-weatherInfo">
+                    <div class="weather-icon">
+                        <i></i>
+                    </div>
+                    <div class="weatherInfo">
+                        <div class="temperature"><span></span></div>
+                        <div class="weatherCondition"></div>
+                    </div>
+                </div>
+                <div class="place"></div>
+                <div class="date"></div>
+         
+              </article>
+
+    </div>
+    <script type="text/javascript" src="/js/script.js"></script>
+</body>
+</html>
