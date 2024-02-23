@@ -12,9 +12,17 @@
               <article class="widgets">
                 <form action="" class="weatherLocation">
                     <input type="text" class="input-files" placeholder="Enter your city name ">
-                    <button type="submit" class="search-button">Search</button>
+                    <button type="submit" class="search-button">Weather</button>
 
 
+                    {{!-- <div class="lon-lan-class" >
+                        <input type="text" class="form-control" class="latitude" name="latitude" placeholder="Latitude" required>
+                        <input type="text" class="form-control" class="longitude" name="longitude" placeholder="Longitude" required>
+                        
+                        <button onclick="getLatLon()" type="button" class="btn btn-secondary btn-block">Get Your Latitude Longitude</button>
+                        </div> --}}
+         
+        
                 </form>
                 <div class="icon-amd-weatherInfo">
                     <div class="weather-icon">
@@ -23,6 +31,11 @@
                     <div class="weatherInfo">
                         <div class="temperature"><span></span></div>
                         <div class="weatherCondition"></div>
+                        
+                    </div>
+                    <div>
+                        <div class="latitude"></div>
+                        <div class="longitude"></div>
                     </div>
                 </div>
                 <div class="place"></div>
