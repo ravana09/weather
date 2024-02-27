@@ -4,46 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style1.css">
 </head>
 <body>
      <div class="main-container">
               <h2 class="header">{{>header}}</h2>
-              <article class="widgets">
-                <form action="" class="weatherLocation">
-                    <input type="text" class="input-files" placeholder="Enter your city name ">
-                    <button type="submit" class="search-button">Weather</button>
+              <div class="widgets">
 
-
-                    {{!-- <div class="lon-lan-class" >
-                        <input type="text" class="form-control" class="latitude" name="latitude" placeholder="Latitude" required>
-                        <input type="text" class="form-control" class="longitude" name="longitude" placeholder="Longitude" required>
-                        
-                        <button onclick="getLatLon()" type="button" class="btn btn-secondary btn-block">Get Your Latitude Longitude</button>
-                        </div> --}}
-         
+    <form id="weatherForm">
         
-                </form>
-                <div class="icon-amd-weatherInfo">
+  <label for="latitudeInput">Latitude:</label>
+  <input type="text" id="latitudeInput" name="latitude">
+  <br>
+  <label for="longitudeInput">Longitude:</label>
+  <input type="text" id="longitudeInput" name="longitude">
+  <br>
+  <span>*Check your location and check the weather</span>
+  <button type="button" id="getLatLonBtn">Check your location</button>
+  <button type="submit" id="getWeatherBtn">Get Weather</button>
+  
+</form>
+
+<div class="weather-info">
+     <div class="icon-amd-weatherInfo">
                     <div class="weather-icon">
                         <i></i>
                     </div>
-                    <div class="weatherInfo">
-                        <div class="temperature"><span></span></div>
-                        <div class="weatherCondition"></div>
-                        
-                    </div>
-                    <div>
-                        <div class="latitude"></div>
-                        <div class="longitude"></div>
-                    </div>
-                </div>
-                <div class="place"></div>
-                <div class="date"></div>
-         
-              </article>
+                    <p class="place"></p>
+  <p class="weatherCondition"></p>
+  <p class="temperature"></p>
+  <p class="humidity"></p>
+  <p class="pressure"></p>
+</div>
+
+</div>
 
     </div>
-    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="/js/script1.js"></script>
 </body>
 </html>

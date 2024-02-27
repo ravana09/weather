@@ -100,10 +100,10 @@ function showData(city){
         result?.weather[0]?.description?.toUpperCase();
       
       // Update longitude and latitude if available
-      if (result.coord) {
-        longitude.textContent = "Longitude: " + result.coord.lon.toFixed(2);
-        latitude.textContent = "Latitude: " + result.coord.lat.toFixed(2);
-      }
+      // if (result.coord) {
+      //   longitude.textContent = "Longitude: " + result.coord.lon.toFixed(2);
+      //   latitude.textContent = "Latitude: " + result.coord.lat.toFixed(2);
+      // }
 
     } else {
       locationElement.textContent = "City not found";
@@ -140,12 +140,17 @@ function getWeatherData(city, callback) {
 }
 
 document.getElementById("getLatLonBtn").addEventListener("click", function() {
-  const city = document.querySelector(".search-button").value.trim(); // Trim any leading/trailing whitespace
-  if (city) {
-    showLatLon(city);
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    console.error("Please enter a city name.");
+    console.error("Geolocation is not supported by this browser.");
   }
 });
 
+function showPosition(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  document.getElementById("latitudeInput").value = latitude;
+  document.getElementById("longitudeInput").value = longitude;
+}
 
