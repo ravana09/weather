@@ -1,49 +1,51 @@
-const express= require("express");
+const express = require("express");
 const hbs = require("hbs");
-const path=require("path");
+const path = require("path");
+const weatherData = require("../utils/weatherData");
 
-const app=express();
-const weatherData=require("../utils/weatherData");
+const app = express();
 
-const publicPath=path.join(__dirname,"../public");
-app.set("view engine", "hbs");
+// Define paths for Express config
+const publicPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../views");
+const partialsPath = path.join(__dirname, "../templests/partials");
+
+// Setup handlebars engine and views location
+app.set("view engine", "hbs");
 app.set("views", viewsPath);
-const partialsPath=path.join(__dirname,"../templests/partials");
-
-
-app.set("views",viewsPath);
 hbs.registerPartials(partialsPath);
+
+// Setup static directory to serve
 app.use(express.static(publicPath));
 
+const PORT = process.env.PORT || 3001;
 
-
-const port=process.env.PORT || 3000;
-
-
-app.get('/',(req,res)=>{
-    res.render("index",{title:"Weather Finder"})
+app.get("/", (req, res) => {
+  res.render("index", { title: "Weather Finder" });
 });
 
-app.get('/weather',(req,res)=>{
-    if(!req.query.address){
-        return res.send(`Address is required`)
+app.get("/weather", (req, res) => {
+  if (!req.query.address) {
+    return res.send(`Address is required`);
+  }
+
+  const address = req.query.address;
+
+  // Call the weatherData function with the provided address
+  weatherData(address, (error, result) => {
+    if (error) {
+      return res.send(error);
     }
-
-
-    weatherData(req.query.address,(error,result)=>{
-        if(error){
-            return res.send(error)
-        }
-        res.send(result)
-    })
-
+    res.send(result);
+  });
 });
 
-app.get("*",(req,res)=>{
-    res.render("404",{title:"page is not found "})
-})
+app.get("*", (req, res) => {
+  res.render("404", { title: "Page Not Found" });
+});
 
-app.listen(port,()=>{
-    console.log(`server is running in http://localhost:${port}`)
-})
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
